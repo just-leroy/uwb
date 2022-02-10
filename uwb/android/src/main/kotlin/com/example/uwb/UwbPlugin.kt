@@ -26,14 +26,23 @@ class UwbPlugin: FlutterPlugin, MethodCallHandler, EventChannel.StreamHandler {
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "getPlatformVersion") {
-      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-    } else if (call.method == "getTestMessage") {
-      result.success("You got a message from android!")
-    } else if (call.method == "getSecondTestMessage") {
-      result.success("You got the second test message from android!")
-    } else {
-      result.notImplemented()
+    when (call.method) {
+        "getPlatformVersion" -> {
+          result.success("Android ${android.os.Build.VERSION.RELEASE}")
+        }
+        "getTestMessage" -> {
+          result.success("You got a message from android!")
+        }
+        "getSecondTestMessage" -> {
+          result.success("You got the second test message from android!")
+        }
+        "startLocationUpdates" -> {
+          channel.invokeMethod("updateLocation", "TestMessage")
+          result.success(true)
+        }
+        else -> {
+          result.notImplemented()
+        }
     }
   }
 
@@ -43,6 +52,13 @@ class UwbPlugin: FlutterPlugin, MethodCallHandler, EventChannel.StreamHandler {
 
   override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
     TODO("Not yet implemented")
+
+    //locatie updaten
+    //object mappen
+    //events.succes (nieuwe locatie)
+
+    //in ios dictionary voor objects sturen. In kotlin een map.
+    //object in object wordt map in map.
   }
 
   override fun onCancel(arguments: Any?) {
