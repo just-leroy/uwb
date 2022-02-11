@@ -16,6 +16,16 @@ class Uwb {
     return startLocationUpdates;
   }
 
+  Future<bool?> get startHost async {
+    final bool? hostingProcess = await _channel.invokeMethod('startHostingProcess');
+    return hostingProcess;
+  }
+
+  Future<bool?> get joinHost async {
+    final bool? joiningProcess = await _channel.invokeMethod('startJoiningProcess');
+    return joiningProcess;
+  }
+
   Future<String?> get platformVersion async {
     final String? version = await _channel.invokeMethod('getPlatformVersion');
     return version;
