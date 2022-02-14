@@ -3,9 +3,9 @@ import UIKit
 
 @available(iOS 14.0, *)
 public class SwiftUwbPlugin: NSObject, FlutterPlugin {
-    static var channel: FlutterMethodChannel? = nil
+    static var channel: FlutterMethodChannel?
+    static var channel2: FlutterMethodChannel?
     
-    var niManager: NIManager = NIManager.shared
     var mpcManager: MPCManager = MPCManager()
     
     private override init() {
@@ -13,6 +13,7 @@ public class SwiftUwbPlugin: NSObject, FlutterPlugin {
       
     static public func register(with registrar: FlutterPluginRegistrar) {
         channel = FlutterMethodChannel(name: "uwb", binaryMessenger: registrar.messenger())
+        channel2 = FlutterMethodChannel(name: "uwb2", binaryMessenger: registrar.messenger())
         let instance = SwiftUwbPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel!)
     }
@@ -28,7 +29,7 @@ public class SwiftUwbPlugin: NSObject, FlutterPlugin {
             result("This is the second message")
         case "startLocationUpdates":
             print("started locationupdates")
-//            startLocationUpdates(arguments: "Testmessage")
+//            SwiftUwbPlugin.startLocationUpdates(arguments: "Testmessage")
             result(true)
         case "startHostingProcess":
             print("started hosting")
@@ -43,8 +44,9 @@ public class SwiftUwbPlugin: NSObject, FlutterPlugin {
         }
     }
     
-    public func startLocationUpdates(arguments: String) {
+    static public func startLocationUpdates(arguments: String) {
         print("calling locationupdates: " + arguments)
-        SwiftUwbPlugin.channel?.invokeMethod("updateLocation", arguments: arguments)
+//        SwiftUwbPlugin.channel?.invokeMethod("updateLocation", arguments: arguments)
+        SwiftUwbPlugin.channel2?.invokeMethod("updateLocation", arguments: arguments)
     }
 }

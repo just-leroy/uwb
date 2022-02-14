@@ -11,9 +11,9 @@ import NearbyInteraction
 @available(iOS 14.0, *)
 class NIManager: NSObject, NISessionDelegate, ObservableObject {
     
-    static let shared = NIManager()
+//    static let shared = NIManager()
     
-    private override init() {
+    override init() {
         
     }
     
@@ -53,11 +53,8 @@ class NIManager: NSObject, NISessionDelegate, ObservableObject {
         print(nearbyObjects)
 //        self.nearbyObjects = nearbyObjects
         distance = String(nearbyObjects.first?.distance ?? 0)
-        SwiftUwbPlugin.channel?.invokeMethod("updateLocation", arguments: "testmessage")
-//        SwiftUwbPlugin.channel?.invokeMethod("updateLocation", arguments: arguments)
-//        SwiftUwbPlugin.startLocationUpdates(arguments: distance)
-        //TODO: PROBLEEM ZIT DAT HIJ HIER EEN ANDERE INSTANTIE AANMAAKT
-//        print("Distance is: \(distance)")
+//        SwiftUwbPlugin.channel?.invokeMethod("updateLocation", arguments: "testmessage")
+        SwiftUwbPlugin.startLocationUpdates(arguments: distance)
     }
     
     func session(_ session: NISession, didRemove nearbyObjects: [NINearbyObject], reason: NINearbyObject.RemovalReason) {

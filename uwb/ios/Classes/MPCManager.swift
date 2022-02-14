@@ -22,7 +22,7 @@ class MPCManager: NSObject, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdver
         print("mpcManager started")
         peerID = MCPeerID(displayName: UIDevice.current.name)
         mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
-        niManager = NIManager.shared
+        niManager = NIManager()
         
         super.init()
         mcSession.delegate = self
