@@ -23,8 +23,6 @@ class Uwb {
     return hostingProcess;
   }
 
-
-
   Future<bool?> get joinHost async {
     final bool? joiningProcess = await _channel.invokeMethod('startJoiningProcess');
     return joiningProcess;
@@ -62,8 +60,6 @@ class Uwb {
   static Future<Stream> get locationStream async {
     return _eventChannel.receiveBroadcastStream();
   }
-
-
 }
 // front facing api
 // hier roep je de uwb platform interface aan.
