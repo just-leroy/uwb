@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - uwb (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - uwb (from `.symlinks/plugins/uwb/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  uwb:
+    :path: ".symlinks/plugins/uwb/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  uwb: 198c138406fbb0f8ad8c646f9e9c4bef72942ac2
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.11.2
