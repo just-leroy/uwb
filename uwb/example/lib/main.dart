@@ -116,7 +116,6 @@ class _MyAppState extends State<MyApp> {
             children: [
               Text('Running on: $_platformVersion\n'),
               Text('Test message: $_testMessage\n'),
-              Text('Second test: $_location\n'),
               Text('Location stream started =  $_locationStreamStarted\n'),
               Text(_location),
               TextButton(onPressed: startHosting, child: Text('startHosting')),
